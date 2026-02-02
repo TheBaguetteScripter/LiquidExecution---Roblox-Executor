@@ -1,3 +1,4 @@
+-- removed blur cuz of lag
 local CollectionService = game:GetService("CollectionService");
 local G2L = {};
 
