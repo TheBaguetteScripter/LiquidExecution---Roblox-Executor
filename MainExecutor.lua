@@ -1,10 +1,16 @@
 local CollectionService = game:GetService("CollectionService");
 local G2L = {};
 
+-- StarterGui.Executor
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["IgnoreGuiInset"] = true;
+G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[Executor]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+G2L["1"]["ResetOnSpawn"] = false;
 
+
+-- StarterGui.Executor.ExecutorFrame
 G2L["2"] = Instance.new("Frame", G2L["1"]);
 G2L["2"]["Visible"] = false;
 G2L["2"]["ZIndex"] = 500000000;
@@ -18,14 +24,23 @@ G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["2"]["Name"] = [[ExecutorFrame]];
 G2L["2"]["BackgroundTransparency"] = 0.1;
 
+
+-- StarterGui.Executor.ExecutorFrame.Drag
 G2L["3"] = Instance.new("LocalScript", G2L["2"]);
 G2L["3"]["Name"] = [[Drag]];
 
+
+-- StarterGui.Executor.ExecutorFrame.BlurController
 G2L["4"] = Instance.new("LocalScript", G2L["2"]);
 G2L["4"]["Name"] = [[BlurController]];
 
+
+-- StarterGui.Executor.ExecutorFrame.LocalScript
 G2L["5"] = Instance.new("LocalScript", G2L["2"]);
 
+
+
+-- StarterGui.Executor.ExecutorFrame.UICorner
 G2L["6"] = Instance.new("UICorner", G2L["2"]);
 G2L["6"]["CornerRadius"] = UDim.new(0.06, 0);
 
