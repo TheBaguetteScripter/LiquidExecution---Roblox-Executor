@@ -1,11 +1,11 @@
--- coregui & icon improvementssss 3
+-- fixed UI errorssssss
 local CollectionService = game:GetService("CollectionService");
 local G2L = {};
 
 -- StarterGui.Executor
-G2L["1"] = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui")));
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
-G2L["1"]["DisplayOrder"] = 2147483647;
+G2L["1"]["DisplayOrder"] = 999999999;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[Executor]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
@@ -772,7 +772,7 @@ G2L["58"]["CanvasSize"] = UDim2.new(0, 0, 30, 0);
 G2L["58"]["Name"] = [[OutputScroller]];
 G2L["58"]["ScrollBarImageTransparency"] = 0.9;
 G2L["58"]["BackgroundColor3"] = Color3.fromRGB(19, 19, 23);
-G2L["58"]["Size"] = UDim2.new(0.912, 0, 0.42929, 0);
+G2L["58"]["Size"] = UDim2.new(0.912, 0, 0, 0);
 G2L["58"]["Position"] = UDim2.new(0.04377, 0, 0.98387, 0);
 G2L["58"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["58"]["ScrollBarThickness"] = 1;
@@ -831,7 +831,7 @@ G2L["5f"] = Instance.new("Frame", G2L["5"]);
 G2L["5f"]["Visible"] = false;
 G2L["5f"]["BorderSizePixel"] = 0;
 G2L["5f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["5f"]["Size"] = UDim2.new(0.13774, 0, 0.06277, 0);
+G2L["5f"]["Size"] = UDim2.new(0.138, 0, 0, 0);
 G2L["5f"]["Position"] = UDim2.new(0.109, 0, 1.14, 117);
 G2L["5f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["5f"]["Name"] = [[Spacer]];
@@ -864,7 +864,7 @@ G2L["61"]["Size"] = UDim2.new(0.073, 0, 0.04308, 0);
 G2L["61"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["61"]["Text"] = [[EXECUTION]];
 G2L["61"]["Name"] = [[Icon]];
-G2L["61"]["Position"] = UDim2.new(0.16529, 0, 0.15966, 0);
+G2L["61"]["Position"] = UDim2.new(0.16529, 0, 0.159, 0);
 
 
 -- StarterGui.Executor.Prompt
@@ -1197,206 +1197,206 @@ G2L["81"]["Scale"] = 0;
 local G2L_REQUIRE = require;
 local G2L_MODULES = {};
 local function require(Module:ModuleScript)
-	local ModuleState = G2L_MODULES[Module];
-	if ModuleState then
-		if not ModuleState.Required then
-			ModuleState.Required = true;
-			ModuleState.Value = ModuleState.Closure();
-		end
-		return ModuleState.Value;
-	end;
-	return G2L_REQUIRE(Module);
+    local ModuleState = G2L_MODULES[Module];
+    if ModuleState then
+        if not ModuleState.Required then
+            ModuleState.Required = true;
+            ModuleState.Value = ModuleState.Closure();
+        end
+        return ModuleState.Value;
+    end;
+    return G2L_REQUIRE(Module);
 end
 
 G2L_MODULES[G2L["8"]] = {
-	Closure = function()
-		local script = G2L["8"];local highlighter = {}
-		local keywords = {
-			lua = {
-				"and", "break", "or", "else", "elseif", "if", "then", "until", "repeat", "while", "do", "for", "in", "end",
-				"local", "return", "function", "export"
-			},
-			rbx = {
-				"game", "workspace", "script", "math", "string", "table", "task", "wait", "select", "next", "Enum",
-				"error", "warn", "tick", "assert", "shared", "loadstring", "tonumber", "tostring", "type",
-				"typeof", "unpack", "print", "Instance", "CFrame", "Vector3", "Vector2", "Color3", "UDim", "UDim2", "Ray", "BrickColor",
-				"OverlapParams", "RaycastParams", "Axes", "Random", "Region3", "Rect", "TweenInfo",
-				"collectgarbage", "not", "utf8", "pcall", "xpcall", "_G", "setmetatable", "getmetatable", "os", "pairs", "ipairs"
-			},
-			operators = {
-				"#", "+", "-", "*", "%", "/", "^", "=", "~", "=", "<", ">", ",", ".", "(", ")", "{", "}", "[", "]", ";", ":"
-			}
-		}
+Closure = function()
+    local script = G2L["8"];local highlighter = {}
+local keywords = {
+	lua = {
+		"and", "break", "or", "else", "elseif", "if", "then", "until", "repeat", "while", "do", "for", "in", "end",
+		"local", "return", "function", "export"
+	},
+	rbx = {
+		"game", "workspace", "script", "math", "string", "table", "task", "wait", "select", "next", "Enum",
+		"error", "warn", "tick", "assert", "shared", "loadstring", "tonumber", "tostring", "type",
+		"typeof", "unpack", "print", "Instance", "CFrame", "Vector3", "Vector2", "Color3", "UDim", "UDim2", "Ray", "BrickColor",
+		"OverlapParams", "RaycastParams", "Axes", "Random", "Region3", "Rect", "TweenInfo",
+		"collectgarbage", "not", "utf8", "pcall", "xpcall", "_G", "setmetatable", "getmetatable", "os", "pairs", "ipairs"
+	},
+	operators = {
+		"#", "+", "-", "*", "%", "/", "^", "=", "~", "=", "<", ">", ",", ".", "(", ")", "{", "}", "[", "]", ";", ":"
+	}
+}
 
-		local colors = {
-			numbers = Color3.fromRGB(255, 198, 0),
-			boolean = Color3.fromRGB(214, 128, 23),
-			operator = Color3.fromRGB(232, 210, 40),
-			lua = Color3.fromRGB(160, 87, 248),
-			rbx = Color3.fromRGB(146, 180, 253),
-			str = Color3.fromRGB(56, 241, 87),
-			comment = Color3.fromRGB(103, 110, 149),
-			null = Color3.fromRGB(79, 79, 79),
-			call = Color3.fromRGB(130, 170, 255),
-			self_call = Color3.fromRGB(227, 201, 141),
-			local_color = Color3.fromRGB(199, 146, 234),
-			function_color = Color3.fromRGB(241, 122, 124),
-			self_color = Color3.fromRGB(146, 134, 234),
-			local_property = Color3.fromRGB(129, 222, 255),
-		}
+local colors = {
+	numbers = Color3.fromRGB(255, 198, 0),
+	boolean = Color3.fromRGB(214, 128, 23),
+	operator = Color3.fromRGB(232, 210, 40),
+	lua = Color3.fromRGB(160, 87, 248),
+	rbx = Color3.fromRGB(146, 180, 253),
+	str = Color3.fromRGB(56, 241, 87),
+	comment = Color3.fromRGB(103, 110, 149),
+	null = Color3.fromRGB(79, 79, 79),
+	call = Color3.fromRGB(130, 170, 255),
+	self_call = Color3.fromRGB(227, 201, 141),
+	local_color = Color3.fromRGB(199, 146, 234),
+	function_color = Color3.fromRGB(241, 122, 124),
+	self_color = Color3.fromRGB(146, 134, 234),
+	local_property = Color3.fromRGB(129, 222, 255),
+}
 
-		local function createKeywordSet(keywords)
-			local keywordSet = {}
-			for _, keyword in ipairs(keywords) do
-				keywordSet[keyword] = true
-			end
-			return keywordSet
+local function createKeywordSet(keywords)
+	local keywordSet = {}
+	for _, keyword in ipairs(keywords) do
+		keywordSet[keyword] = true
+	end
+	return keywordSet
+end
+
+local luaSet = createKeywordSet(keywords.lua)
+local rbxSet = createKeywordSet(keywords.rbx)
+local operatorsSet = createKeywordSet(keywords.operators)
+
+local function getHighlight(tokens, index)
+	local token = tokens[index]
+
+	if colors[token .. "_color"] then
+		return colors[token .. "_color"]
+	end
+
+	if tonumber(token) then
+		return colors.numbers
+	elseif token == "nil" then
+		return colors.null
+	elseif token:sub(1, 2) == "--" then
+		return colors.comment
+	elseif operatorsSet[token] then
+		return colors.operator
+	elseif luaSet[token] then
+		return colors.rbx
+	elseif rbxSet[token] then
+		return colors.lua
+	elseif token:sub(1, 1) == "\"" or token:sub(1, 1) == "\'" then
+		return colors.str
+	elseif token == "true" or token == "false" then
+		return colors.boolean
+	end
+
+	if tokens[index + 1] == "(" then
+		if tokens[index - 1] == ":" then
+			return colors.self_call
 		end
 
-		local luaSet = createKeywordSet(keywords.lua)
-		local rbxSet = createKeywordSet(keywords.rbx)
-		local operatorsSet = createKeywordSet(keywords.operators)
+		return colors.call
+	end
 
-		local function getHighlight(tokens, index)
-			local token = tokens[index]
-
-			if colors[token .. "_color"] then
-				return colors[token .. "_color"]
-			end
-
-			if tonumber(token) then
-				return colors.numbers
-			elseif token == "nil" then
-				return colors.null
-			elseif token:sub(1, 2) == "--" then
-				return colors.comment
-			elseif operatorsSet[token] then
-				return colors.operator
-			elseif luaSet[token] then
-				return colors.rbx
-			elseif rbxSet[token] then
-				return colors.lua
-			elseif token:sub(1, 1) == "\"" or token:sub(1, 1) == "\'" then
-				return colors.str
-			elseif token == "true" or token == "false" then
-				return colors.boolean
-			end
-
-			if tokens[index + 1] == "(" then
-				if tokens[index - 1] == ":" then
-					return colors.self_call
-				end
-
-				return colors.call
-			end
-
-			if tokens[index - 1] == "." then
-				if tokens[index - 2] == "Enum" then
-					return colors.rbx
-				end
-
-				return colors.local_property
-			end
+	if tokens[index - 1] == "." then
+		if tokens[index - 2] == "Enum" then
+			return colors.rbx
 		end
 
-		function highlighter.run(source)
-			local tokens = {}
-			local currentToken = ""
+		return colors.local_property
+	end
+end
 
-			local inString = false
-			local inComment = false
-			local commentPersist = false
+function highlighter.run(source)
+	local tokens = {}
+	local currentToken = ""
 
-			for i = 1, #source do
-				local character = source:sub(i, i)
+	local inString = false
+	local inComment = false
+	local commentPersist = false
 
-				if inComment then
-					if character == "\n" and not commentPersist then
-						table.insert(tokens, currentToken)
-						table.insert(tokens, character)
-						currentToken = ""
+	for i = 1, #source do
+		local character = source:sub(i, i)
 
-						inComment = false
-					elseif source:sub(i - 1, i) == "]]" and commentPersist then
-						currentToken ..= "]"
+		if inComment then
+			if character == "\n" and not commentPersist then
+				table.insert(tokens, currentToken)
+				table.insert(tokens, character)
+				currentToken = ""
 
-						table.insert(tokens, currentToken)
-						currentToken = ""
+				inComment = false
+			elseif source:sub(i - 1, i) == "]]" and commentPersist then
+				currentToken ..= "]"
 
-						inComment = false
-						commentPersist = false
-					else
-						currentToken = currentToken .. character
-					end
-				elseif inString then
-					if character == inString and source:sub(i-1, i-1) ~= "\\" or character == "\n" then
-						currentToken = currentToken .. character
-						inString = false
-					else
-						currentToken = currentToken .. character
-					end
-				else
-					if source:sub(i, i + 1) == "--" then
-						table.insert(tokens, currentToken)
-						currentToken = "-"
-						inComment = true
-						commentPersist = source:sub(i + 2, i + 3) == "[["
-					elseif character == "\"" or character == "\'" then
-						table.insert(tokens, currentToken)
-						currentToken = character
-						inString = character
-					elseif operatorsSet[character] then
-						table.insert(tokens, currentToken)
-						table.insert(tokens, character)
-						currentToken = ""
-					elseif character:match("[%w_]") then
-						currentToken = currentToken .. character
-					else
-						table.insert(tokens, currentToken)
-						table.insert(tokens, character)
-						currentToken = ""
-					end
-				end
+				table.insert(tokens, currentToken)
+				currentToken = ""
+
+				inComment = false
+				commentPersist = false
+			else
+				currentToken = currentToken .. character
 			end
-
-			table.insert(tokens, currentToken)
-
-			local highlighted = {}
-
-			for i, token in ipairs(tokens) do
-				local highlight = getHighlight(tokens, i)
-
-				if highlight then
-					local syntax = string.format("<font color = \"#%s\">%s</font>", highlight:ToHex(), token:gsub("<", "&lt;"):gsub(">", "&gt;"))
-
-					table.insert(highlighted, syntax)
-				else
-					table.insert(highlighted, token)
-				end
+		elseif inString then
+			if character == inString and source:sub(i-1, i-1) ~= "\\" or character == "\n" then
+				currentToken = currentToken .. character
+				inString = false
+			else
+				currentToken = currentToken .. character
 			end
-
-			return table.concat(highlighted)
+		else
+			if source:sub(i, i + 1) == "--" then
+				table.insert(tokens, currentToken)
+				currentToken = "-"
+				inComment = true
+				commentPersist = source:sub(i + 2, i + 3) == "[["
+			elseif character == "\"" or character == "\'" then
+				table.insert(tokens, currentToken)
+				currentToken = character
+				inString = character
+			elseif operatorsSet[character] then
+				table.insert(tokens, currentToken)
+				table.insert(tokens, character)
+				currentToken = ""
+			elseif character:match("[%w_]") then
+				currentToken = currentToken .. character
+			else
+				table.insert(tokens, currentToken)
+				table.insert(tokens, character)
+				currentToken = ""
+			end
 		end
+	end
 
-		return highlighter
-	end;
+	table.insert(tokens, currentToken)
+
+	local highlighted = {}
+
+	for i, token in ipairs(tokens) do
+		local highlight = getHighlight(tokens, i)
+
+		if highlight then
+			local syntax = string.format("<font color = \"#%s\">%s</font>", highlight:ToHex(), token:gsub("<", "&lt;"):gsub(">", "&gt;"))
+
+			table.insert(highlighted, syntax)
+		else
+			table.insert(highlighted, token)
+		end
+	end
+
+	return table.concat(highlighted)
+end
+
+return highlighter
+end;
 };
 -- StarterGui.Executor.Initialize
 local function C_2()
-	local script = G2L["2"];
+local script = G2L["2"];
 	local TweenService = game:GetService("TweenService")
-
+	
 	local Prompt = script.Parent.Prompt
 	local Backdrop = Prompt.Backdrop
 	local PromptFrame = Prompt.PromptFrame
 	local ExecutorFrame = script.Parent.ExecutorFrame
-
+	
 	local function tweenBackground(show)
 		local goal = {BackgroundTransparency = show and 1 or 0.25}
 		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 		return TweenService:Create(Backdrop, tweenInfo, goal)
 	end
-
+	
 	local function tweenPromptFrame(show)
 		local goal
 		if show then
@@ -1408,7 +1408,7 @@ local function C_2()
 		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 		return TweenService:Create(PromptFrame, tweenInfo, {Position = goal})
 	end
-
+	
 	local function hidePrompt(destroyParent)
 		local bgTween = tweenBackground(true)
 		local frameTween = tweenPromptFrame(false)
@@ -1424,80 +1424,80 @@ local function C_2()
 			end
 		end)
 	end
-
+	
 	wait(3)
 	Backdrop.Visible = true
 	local bgTween = tweenBackground(false)
 	local frameTween = tweenPromptFrame(true)
 	bgTween:Play()
 	frameTween:Play()
-
+	
 	PromptFrame.Yes.MouseButton1Click:Connect(function()
 		hidePrompt(false)
 	end)
-
+	
 	PromptFrame.No.MouseButton1Click:Connect(function()
 		hidePrompt(true)
 	end)
-
+	
 	PromptFrame.Close.MouseButton1Click:Connect(function()
 		hidePrompt(true)
 	end)
-
+	
 end;
 task.spawn(C_2);
 -- StarterGui.Executor.FramePosition
 local function C_3()
-	local script = G2L["3"];
+local script = G2L["3"];
 	local parent = script.Parent
 	local executorFrame = parent:WaitForChild("ExecutorFrame")
 	local openFrame = parent:WaitForChild("OpenFrame")
-
+	
 	local syncing = false
-
+	
 	executorFrame:GetPropertyChangedSignal("Position"):Connect(function()
 		if syncing then return end
 		syncing = true
 		openFrame.Position = executorFrame.Position
 		syncing = false
 	end)
-
+	
 	openFrame:GetPropertyChangedSignal("Position"):Connect(function()
 		if syncing then return end
 		syncing = true
 		executorFrame.Position = openFrame.Position
 		syncing = false
 	end)
-
+	
 end;
 task.spawn(C_3);
 -- StarterGui.Executor.OpenClose
 local function C_4()
-	local script = G2L["4"];
+local script = G2L["4"];
 	local TweenService = game:GetService("TweenService")
-
+	
 	local parent = script.Parent
 	local OpenFrame = parent:WaitForChild("OpenFrame")
 	local ExecutorFrame = parent:WaitForChild("ExecutorFrame")
-
+	
 	local OpenButton = OpenFrame:WaitForChild("Open")
 	local CloseButton = ExecutorFrame:WaitForChild("Close")
-
+	
 	local OpenScale = OpenFrame:WaitForChild("UIScale")
 	local ExecutorScale = ExecutorFrame:WaitForChild("UIScale")
-
+	
 	local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
+	
 	local lastOpenClick = 0
 	local lastCloseClick = 0
 	local doubleClickThreshold = 0.3
-
+	
 	local function tweenScale(scale, value)
 		local tween = TweenService:Create(scale, tweenInfo, {Scale = value})
 		tween:Play()
 		tween.Completed:Wait()
 	end
-
+	
 	OpenButton.MouseButton1Click:Connect(function()
 		local now = os.clock()
 		if now - lastOpenClick <= doubleClickThreshold then
@@ -1506,7 +1506,7 @@ local function C_4()
 		end
 		lastOpenClick = now
 	end)
-
+	
 	CloseButton.MouseButton1Click:Connect(function()
 		local now = os.clock()
 		if now - lastCloseClick <= doubleClickThreshold then
@@ -1515,28 +1515,28 @@ local function C_4()
 		end
 		lastCloseClick = now
 	end)
-
+	
 end;
 task.spawn(C_4);
 -- StarterGui.Executor.ExecutorFrame.Drag
 local function C_6()
-	local script = G2L["6"];
+local script = G2L["6"];
 	local UIS = game:GetService("UserInputService")
 	local TweenService = game:GetService("TweenService")
 	local frame = script.Parent
-
+	
 	local dragging = false
 	local dragStart
 	local startPos
-
+	
 	local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
+	
 	frame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			dragging = true
 			dragStart = input.Position
 			startPos = frame.Position
-
+	
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -1544,7 +1544,7 @@ local function C_6()
 			end)
 		end
 	end)
-
+	
 	UIS.InputChanged:Connect(function(input)
 		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
 			local delta = input.Position - dragStart
@@ -1556,42 +1556,42 @@ local function C_6()
 					startPos.Y.Offset + delta.Y
 				)
 			}
-
+	
 			TweenService:Create(frame, tweenInfo, goal):Play()
 		end
 	end)
-
+	
 end;
 task.spawn(C_6);
 -- StarterGui.Executor.ExecutorFrame.LocalScript
 local function C_7()
-	local script = G2L["7"];
+local script = G2L["7"];
 	local executeButton = script.Parent.ButtonList.Execute
 	local attachButton = script.Parent.ButtonList.Attach
 	local textbox = script.Parent.Scroller.ScriptOutputInvis
 	local isAttached = false
-
+	
 	attachButton.MouseButton1Click:Connect(function()
 		if not isAttached then
 			isAttached = true
-
-
+	
+	
 			wait(1)
-
+	
 			local TweenService = game:GetService("TweenService")
 			local tweenInfo = TweenInfo.new(0.5)
 			local goal = {BackgroundColor3 = Color3.fromRGB(53, 191, 117)}
 			local tween = TweenService:Create(attachButton, tweenInfo, goal)
 			tween:Play()
-
+	
 			local textLabel = attachButton:FindFirstChildWhichIsA("TextLabel") or attachButton:FindFirstChildWhichIsA("TextButton")
 			if textLabel then
 				textLabel.Text = "ATTACHED"
 			end
 		end
 	end)
-
-
+	
+	
 	executeButton.MouseButton1Click:Connect(function()
 		if isAttached then
 			loadstring(textbox.Text)()
@@ -1603,62 +1603,62 @@ end;
 task.spawn(C_7);
 -- StarterGui.Executor.ExecutorFrame.OutputToggle
 local function C_9()
-	local script = G2L["9"];
+local script = G2L["9"];
 	local TweenService = game:GetService("TweenService")
-
+	
 	local button = script.Parent.ButtonList.Console
 	local outputScroller = script.Parent.OutputScroller
 	local spacer = script.Parent.Spacer
-
+	
 	local isOpen = false
 	local isAnimating = false
-
+	
 	-- Tween settings
 	local tweenInfo = TweenInfo.new(
 		0.3, -- Duration (adjust as needed)
 		Enum.EasingStyle.Quad,
 		Enum.EasingDirection.Out
 	)
-
+	
 	-- Sizes for OutputScroller
 	local outputClosed = UDim2.new(0.912, 0, 0, 0)
 	local outputOpen = UDim2.new(0.912, 0, 0.429, 0)
-
+	
 	-- Sizes for Spacer
 	local spacerClosed = UDim2.new(0.138, 0, 0, 0)
 	local spacerOpen = UDim2.new(0.138, 0, 0.063, 0)
-
+	
 	button.MouseButton1Click:Connect(function()
 		if isAnimating then return end -- Cooldown check
-
+	
 		isAnimating = true
-
+	
 		if not isOpen then
 			-- Opening animation: OutputScroller first, then Spacer
 			outputScroller.Visible = true
-
+	
 			local outputTween = TweenService:Create(outputScroller, tweenInfo, {Size = outputOpen})
 			outputTween:Play()
 			outputTween.Completed:Wait()
-
+	
 			spacer.Visible = true
 			local spacerTween = TweenService:Create(spacer, tweenInfo, {Size = spacerOpen})
 			spacerTween:Play()
 			spacerTween.Completed:Wait()
-
+	
 		else
 			-- Closing animation: Spacer first, then OutputScroller
 			local spacerTween = TweenService:Create(spacer, tweenInfo, {Size = spacerClosed})
 			spacerTween:Play()
 			spacerTween.Completed:Wait()
 			spacer.Visible = false
-
+	
 			local outputTween = TweenService:Create(outputScroller, tweenInfo, {Size = outputClosed})
 			outputTween:Play()
 			outputTween.Completed:Wait()
 			outputScroller.Visible = false
 		end
-
+	
 		isOpen = not isOpen
 		isAnimating = false
 	end)
@@ -1666,15 +1666,15 @@ end;
 task.spawn(C_9);
 -- StarterGui.Executor.ExecutorFrame.Scroller.ScriptEditor.LocalScript
 local function C_14()
-	local script = G2L["14"];
+local script = G2L["14"];
 	local highlighter = require(script.Parent.Parent.Parent.Highlighter)
 	local textBox = script.Parent
 	local textLabel = script.Parent.Parent.ScriptOutput
-
+	
 	textLabel.RichText = true
 	textLabel.TextXAlignment = Enum.TextXAlignment.Left
 	textLabel.TextYAlignment = Enum.TextYAlignment.Top
-
+	
 	textBox:GetPropertyChangedSignal("Text"):Connect(function()
 		textLabel.Text = highlighter.run(textBox.Text)
 	end)
@@ -1682,7 +1682,7 @@ end;
 task.spawn(C_14);
 -- StarterGui.Executor.ExecutorFrame.Scroller.ScriptEditor.LocalScript
 local function C_15()
-	local script = G2L["15"];
+local script = G2L["15"];
 	local hello = "'Hello LiquidBounce!'"
 	wait(1)
 	script.Parent.Text = "print("..hello..")"
@@ -1690,37 +1690,37 @@ end;
 task.spawn(C_15);
 -- StarterGui.Executor.ExecutorFrame.Scroller.ScriptEditor.Clearing
 local function C_16()
-	local script = G2L["16"];
+local script = G2L["16"];
 	local TextBox = script.Parent
 	local ClearButton = script.Parent.Parent.Parent:WaitForChild("ButtonList"):WaitForChild("Clear")
-
+	
 	local savedText = ""
-
+	
 	TextBox.Focused:Connect(function()
 		if TextBox.Text == "" then
 			TextBox.Text = savedText
 		end
 	end)
-
+	
 	TextBox.Changed:Connect(function()
 		savedText = TextBox.Text
 	end)
-
+	
 	ClearButton.MouseButton1Click:Connect(function()
 		TextBox.Text = ""
 		savedText = ""
 	end)
-
+	
 end;
 task.spawn(C_16);
 -- StarterGui.Executor.ExecutorFrame.Scroller.ScriptOutputInvis.LocalScript
 local function C_1d()
-	local script = G2L["1d"];
+local script = G2L["1d"];
 	local v1 = script.Parent
 	local v2 = script.Parent.Parent:WaitForChild("ScriptEditor")
-
+	
 	local v3 = v1.Text
-
+	
 	v2:GetPropertyChangedSignal("Text"):Connect(function()
 		if v2.Text ~= "" then
 			v3 = v2.Text
@@ -1729,58 +1729,58 @@ local function C_1d()
 			v1.Text = v3
 		end
 	end)
-
+	
 end;
 task.spawn(C_1d);
 -- StarterGui.Executor.ExecutorFrame.OutputScroller.ScriptOutput.LocalScript
 local function C_5c()
-	local script = G2L["5c"];
+local script = G2L["5c"];
 	local v1 = game:GetService("LogService")
 	local v2 = script.Parent
-
+	
 	v2.RichText = true
 	v2.TextWrapped = true
 	v2.TextYAlignment = Enum.TextYAlignment.Top
 	v2.TextXAlignment = Enum.TextXAlignment.Left
-
+	
 	v2.Text = '<font color="rgb(51,95,255)">Output:</font>\n\n'
-
+	
 	local v3 = {
 		[Enum.MessageType.MessageOutput] = "rgb(255,255,255)",
 		[Enum.MessageType.MessageInfo] = "rgb(255,255,255)",
 		[Enum.MessageType.MessageWarning] = "rgb(255,210,90)",
 		[Enum.MessageType.MessageError] = "rgb(255,90,90)"
 	}
-
+	
 	local function v4(v5, v6)
 		local v7 = v3[v6] or "rgb(255,255,255)"
 		v2.Text ..= `<font color="{v7}">{v5}</font>\n\n`
 	end
-
+	
 	v1.MessageOut:Connect(v4)
-
+	
 end;
 task.spawn(C_5c);
 -- StarterGui.Executor.OpenFrame.Drag
 local function C_7b()
-	local script = G2L["7b"];
+local script = G2L["7b"];
 	local UIS = game:GetService("UserInputService")
 	local TweenService = game:GetService("TweenService")
 	local frame = script.Parent
 	local button = script.Parent.Open
-
+	
 	local dragging = false
 	local dragStart
 	local startPos
-
+	
 	local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
+	
 	button.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			dragging = true
 			dragStart = input.Position
 			startPos = frame.Position
-
+	
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -1788,7 +1788,7 @@ local function C_7b()
 			end)
 		end
 	end)
-
+	
 	UIS.InputChanged:Connect(function(input)
 		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
 			local delta = input.Position - dragStart
@@ -1800,11 +1800,11 @@ local function C_7b()
 					startPos.Y.Offset + delta.Y
 				)
 			}
-
+	
 			TweenService:Create(frame, tweenInfo, goal):Play()
 		end
 	end)
-
+	
 end;
 task.spawn(C_7b);
 
