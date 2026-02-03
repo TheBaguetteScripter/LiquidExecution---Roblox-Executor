@@ -1,9 +1,9 @@
--- coregui & icon improvement
+-- coregui & icon improvementssss
 local CollectionService = game:GetService("CollectionService");
 local G2L = {};
 
 -- StarterGui.Executor
-G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"] = Instance.new("ScreenGui",cloneref(game:GetService("CoreGui")));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[Executor]];
@@ -1192,11 +1192,6 @@ G2L["81"] = Instance.new("UIScale", G2L["7a"]);
 G2L["81"]["Scale"] = 0;
 
 
--- StarterGui.Executor.LocalScript
-G2L["82"] = Instance.new("LocalScript", G2L["1"]);
-
-
-
 -- Require G2L wrapper
 local G2L_REQUIRE = require;
 local G2L_MODULES = {};
@@ -1811,13 +1806,5 @@ local script = G2L["7b"];
 	
 end;
 task.spawn(C_7b);
--- StarterGui.Executor.LocalScript
-local function C_82()
-local script = G2L["82"];
-	local CoreGui = cloneref(game:GetService("CoreGui"))
-	
-	script.Parent = CoreGui
-end;
-task.spawn(C_82);
 
 return G2L["1"], require;
