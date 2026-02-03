@@ -1,9 +1,9 @@
--- coregui & icon improvementssss 2
+-- coregui & icon improvementssss 3
 local CollectionService = game:GetService("CollectionService");
 local G2L = {};
 
 -- StarterGui.Executor
-G2L["1"] = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui"))));
+G2L["1"] = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui")));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["DisplayOrder"] = 999999999;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
